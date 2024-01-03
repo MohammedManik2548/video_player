@@ -42,7 +42,8 @@ dependencies:
   timeago: ^3.6.0
   miniplayer: ^1.0.1
   intl: ^0.18.1
-  appinio_video_player: ^1.2.1
+  chewie: ^1.7.4
+  video_player: ^2.7.2
 
 dev_dependencies:
   flutter_test:
