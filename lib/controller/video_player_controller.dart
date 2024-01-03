@@ -7,16 +7,12 @@ import 'package:video_player/video_player.dart';
 import '../model/VideoModel.dart';
 
 class VideoPageController extends GetxController{
-
-  late Results videoModel;
-  var videoList = <Results>[].obs;
   late VideoPlayerController videoPlayerController;
   ChewieController? chewieController;
 
   @override
   void onInit() {
-    // getVideoData();
-    initializedPlayer();
+    // initializedPlayer();
     super.onInit();
   }
 
@@ -27,23 +23,26 @@ class VideoPageController extends GetxController{
     super.dispose();
   }
 
-  Future<void> initializedPlayer() async{
-    videoPlayerController = VideoPlayerController.networkUrl(Uri.parse('http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'));
+  Future<void> initializedPlayer(String url) async{
+    videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(url));
 
+    // videoPlayerController..initialize().then((_){
+    //   videoPlayerController.play();
+    // });
     await Future.wait([videoPlayerController.initialize()]);
     chewieController=ChewieController(
         videoPlayerController: videoPlayerController,
       autoPlay: true,
-      looping: true,
+      // looping: true,
       materialProgressColors: ChewieProgressColors(
         playedColor: Colors.red,
-        handleColor: Colors.cyanAccent,
-        backgroundColor: Colors.yellow,
-        bufferedColor: Colors.lightGreen
+        handleColor: Colors.red,
+        // backgroundColor: Colors.yellow,
+        bufferedColor: Colors.grey
       ),
-      placeholder: Container(
-        color: Colors.lightGreen,
-      ),
+      // placeholder: Container(
+      //   color: Colors.lightGreen,
+      // ),
       autoInitialize: true,
     );
     update();
